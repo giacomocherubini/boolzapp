@@ -1,6 +1,7 @@
 * {
 box-sizing: border-box;
 margin:0;
+font-family: 'lato',sans-serif;
 }
 
 body {
@@ -137,18 +138,22 @@ form {
   right: 0;
 }
 
-.ricerca_contatto {
+.ricerca_chat {
   width: 100%;
   height: 60px;
   background-color: #f2f2f2;
+  position: relative;
 }
 
 .search {
-  width: 60%;
+  width: 90%;
   height: 60%;
   border: 0;
   border-radius: 15px;
   margin: 0 auto;
+  position: absolute;
+  left: 5%;
+  top: 20%;
 }
 
 .invio_messaggio {
@@ -163,6 +168,7 @@ form {
 }
 
 .message {
+  position: relative;
   width: 30%;
   background-color: white;
   border-radius: 5px;
@@ -170,7 +176,23 @@ form {
   float: left;
   padding: 10px;
   display: block;
-  overflow: auto;
+  overflow:auto;
+}
+
+.message .ora,
+.message i {
+  position: absolute;
+  right: 5px;
+  color: #8c8c8c;
+}
+
+.message .ora {
+  bottom: 0;
+}
+
+.message i {
+  top: 0;
+  cursor: pointer;
 }
 
 .message::after {
@@ -182,8 +204,51 @@ form {
 .mine {
   background-color: #e3f2ca;
   float: right;
+  clear: both;
 }
 
 .template_container {
   display: none;
+}
+
+.chat {
+  position: relative;
+  height: 80px;
+}
+
+.chat:hover {
+  background-color: lightgrey;
+}
+
+.chat .img_contatto {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.chat .nome_contatto,
+.chat .ora,
+.chat .ultimo_messaggio  {
+  position: absolute;
+}
+
+.chat .nome_contatto,
+.chat .ora  {
+  top: 15px;
+}
+
+.chat .ultimo_messaggio {
+  left: 100px;
+  top: 40px;
+}
+
+.chat .nome_contatto {
+ left: 100px;
+ font-size: 20px;
+}
+
+.chat .ora,
+.chat .ultimo_messaggio {
+  right: 10px;
+  color: #8c8c8c;
 }
