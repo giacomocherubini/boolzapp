@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // funzione per scorre in basso fino all'ultimo messaggio nella finestra
+  scroll_message();
+
   // intercetto il click sull'icona destra dell'area di input del messaggio
   $('.contenitore_icona').click(function() {
     send_message();
@@ -28,9 +31,10 @@ $(document).ready(function() {
       new_message.children('.message').addClass('mine').text(messaggio_scritto);
 
       // appendo il nuovo messaggio nel contenitore di tutti i messaggi
-      $('.discorso').append(new_message)
+      $('.discorso.active').append(new_message)
 
-      $('.container_messages').scrollTop($('.container_messages')[0].scrollHeight);
+      // funzione per scorre in basso fino all'ultimo messaggio nella finestra
+      scroll_message();
 
       // resetto l'imput
       $('.invio_messaggio').val('');
@@ -44,15 +48,22 @@ $(document).ready(function() {
       new_message.children('.message').text('ok');
 
       // appendo il nuovo messaggio nel contenitore di tutti i messaggi
-      $('.discorso').append(new_message)
+      $('.discorso.active').append(new_message)
 
-
-      $('.container_messages').scrollTop($('.container_messages')[0].scrollHeight);
+      // funzione per scorre in basso fino all'ultimo messaggio nella finestra
+      scroll_message();
 
       },1000);
 
     }
  }
+
+    // funzione per scorre in basso fino all'ultimo messaggio nella finestra
+    function scroll_message() {
+      // faccio scroll nella finestra fino al messaggio inserito
+      $('.discorso').scrollTop($('.discorso')[0].scrollHeight);
+    }
+
 
     // intercetto la ricerca
   $('.search').keyup(function(event) {
@@ -97,12 +108,22 @@ $(document).ready(function() {
 
 
       var dialogo = $(this).attr('data-conversazione');
-      var pannello_dialogo = $('.discorso[data-coversazione="'+dialogo+'"]');
+      var pannello_dialogo = $('.discorso[data-conversazione="'+dialogo+'"]');
     // nascondi tutti i pannelli visibili precedentemente
     $('.discorso').removeClass('active');
     // aggiungo la classe active al pannello corrispondente al contatto cliccato
     pannello_dialogo.addClass('active');
+
+    // funzione per scorre in basso fino all'ultimo messaggio nella finestra
+    scroll_message();
   });
+
+
+//   // intercetto il click sull'icona delle opzioni
+//   $('.fa-chevron-down').click(function() {
+//   // recupero il pannello delle opzioni corrispondente
+//   $(this).siblings('.message_options-panel').toggleClass('active');
+// });
 
 
 });
