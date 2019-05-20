@@ -90,8 +90,12 @@ $(document).ready(function() {
     var contact_name = $(this).find('.nome_contatto').text();
      // scrivo il nome del contatto nella finestra di destra in alto
      $('.header_right .nome_contatto').text(contact_name);
+     // recupero l'immagine del contatto cliccato
+     var src_contatto = $(this).find('img').attr('src');
+     // imposto l'immagine del contatto corrente
+     $('.header_img_right').children('img').attr('src', src_contatto);
 
-      // var dialogo = $(this).attr('data-conversazione');
+
       var dialogo = $(this).attr('data-conversazione');
       var pannello_dialogo = $('.discorso[data-coversazione="'+dialogo+'"]');
     // nascondi tutti i pannelli visibili precedentemente
