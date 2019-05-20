@@ -84,8 +84,14 @@ $(document).ready(function() {
   });
 
   // intercetto il click su un contatto della colonna sinistra
-  $('.chat').click(function() { 
+  $('.chat').click(function() {
 
+    // recupero i nome del contatto cliccato
+    var contact_name = $(this).find('.nome_contatto').text();
+     // scrivo il nome del contatto nella finestra di destra in alto
+     $('.header_right .nome_contatto').text(contact_name);
+
+      // var dialogo = $(this).attr('data-conversazione');
       var dialogo = $(this).attr('data-conversazione');
       var pannello_dialogo = $('.discorso[data-coversazione="'+dialogo+'"]');
     // nascondi tutti i pannelli visibili precedentemente
